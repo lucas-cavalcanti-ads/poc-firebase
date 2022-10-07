@@ -5,9 +5,10 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve",
+    "start": "nx serve poc-firebase",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx e2e poc-firebase-e2e --watch",
+    "e2e": "nx e2e poc-firebase"
   },
   "private": true,
   "dependencies": {
