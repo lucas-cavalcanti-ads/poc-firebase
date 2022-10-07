@@ -1,4 +1,5 @@
-import { getTitle } from './../elements/elements';
+import { getTitle } from '../support/elements';
+
 describe('TESTE', () => { 
     beforeEach(() => cy.visit('/'));
 
