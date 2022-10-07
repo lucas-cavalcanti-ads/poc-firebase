@@ -1,0 +1,94 @@
+{
+  "name": "poc-firebase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/poc-firebase/src",
+  "prefix": "teste",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/poc-firebase",
+        "index": "apps/poc-firebase/src/index.html",
+        "main": "apps/poc-firebase/src/main.ts",
+        "polyfills": "apps/poc-firebase/src/polyfills.ts",
+        "tsConfig": "apps/poc-firebase/tsconfig.app.json",
+        "assets": [
+          "apps/poc-firebase/src/favicon.ico",
+          "apps/poc-firebase/src/assets"
+        ],
+        "styles": ["apps/poc-firebase/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/poc-firebase/src/environments/environment.ts",
+              "with": "apps/poc-firebase/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "poc-firebase:build:production"
+        },
+        "development": {
+          "browserTarget": "poc-firebase:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "poc-firebase:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/poc-firebase/**/*.ts",
+          "apps/poc-firebase/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/poc-firebase"],
+      "options": {
+        "jestConfig": "apps/poc-firebase/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
